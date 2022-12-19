@@ -12,8 +12,7 @@ import MarkAllAsUnpacked from './mark-all-as-unpacked';
 import NewItem from './new-item';
 
 const Application = () => {
-  const [items, setItems] = useState(getInitialItems());
-  const [newItemName, setNewItemName] = useState('');
+  const [items, setItems] = useState(() => getInitialItems());
 
   const add = (name) => {
     const item = createItem(name);
@@ -39,8 +38,6 @@ const Application = () => {
     <main className="flex flex-col gap-8 p-8 mx-auto lg:max-w-4xl">
       <Header items={items} />
       <NewItem
-        newItemName={newItemName}
-        setNewItemName={setNewItemName}
         addItem={add}
       />
       <section className="flex flex-col gap-8 md:flex-row">
