@@ -1,6 +1,8 @@
-import { useState } from 'react';
-
-const NewItem = ({ addItem }) => {
+import { useState, memo} from 'react';
+import {add} from "../lib/reducer";
+const NewItem = ({
+                   addItem
+}) => {
   const [newItemName, setNewItemName] = useState('');
   return (
     <form
@@ -37,4 +39,4 @@ const NewItem = ({ addItem }) => {
   );
 };
 
-export default NewItem;
+export default memo(NewItem);
