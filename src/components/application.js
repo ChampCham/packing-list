@@ -13,8 +13,8 @@ import NewItem from './new-item';
 import {reducer} from "../lib/reducer";
 
 const Application = () => {
-  // const [items, setItems] = useState(() => getInitialItems());
-  const [items, dispatch] = useReducer(reducer, getInitialItems());
+  const [items, setItems] = useState(() => getInitialItems());
+  // const [items, dispatch] = useReducer(reducer, getInitialItems());
 
   // const add = useCallback((name) => {
   //   const item = createItem(name);
@@ -40,28 +40,32 @@ const Application = () => {
     <main className="flex flex-col gap-8 p-8 mx-auto lg:max-w-4xl">
       <Header items={items} />
       <NewItem
-          dispatch={dispatch}
+          // dispatch={dispatch}
         // addItem={add}
+          setItems={setItems}
       />
       <section className="flex flex-col gap-8 md:flex-row">
         <ItemList
           title="Unpacked Items"
           items={unpackedItems}
-          dispatch={dispatch}
+          // dispatch={dispatch}
           // update={update}
           // remove={remove}
+          setItems={setItems}
         />
         <ItemList
           title="Packed Items"
           items={packedItems}
-          dispatch={dispatch}
+          // dispatch={dispatch}
           // update={update}
           // remove={remove}
+          setItems={setItems}
         />
       </section>
       <MarkAllAsUnpacked
           // onClick={markAllAsUnpacked}
-          dispatch={dispatch}
+          // dispatch={dispatch}
+          setItems={setItems}
       />
     </main>
   );

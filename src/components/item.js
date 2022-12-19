@@ -1,8 +1,11 @@
 import clsx from 'clsx';
 import { useState, memo} from 'react';
 import {remove, update} from "../lib/reducer";
+import {removeItem, updateItem} from "../lib/items";
 
-const Item = ({ item,  dispatch
+const Item = ({ item,
+                  setItems,
+                  //dispatch
                   // update, remove
 }) => {
   const [editing, setEditing] = useState(false);
@@ -14,7 +17,8 @@ const Item = ({ item,  dispatch
         className="focus:bg-red-500"
         checked={item.packed}
         id={`toggle-${item.id}`}
-        onChange={() => dispatch(update(item.id, { packed: !item.packed }))}
+        onChange={() => setItems(items => updateItem(items, item.id,  { packed: !item.packed }))}
+        // onChange={() => dispatch(update(item.id, { packed: !item.packed }))}
         // onChange={() => update(item.id, { packed: !item.packed })}
       />
       <label
